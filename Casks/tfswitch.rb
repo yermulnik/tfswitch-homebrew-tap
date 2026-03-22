@@ -3,7 +3,7 @@ cask "tfswitch" do
   name "tfswitch"
   desc "The tfswitch command lets you switch between terraform versions."
   homepage "https://warrensbox.github.io/terraform-switcher"
-  version "0.0.0"
+  version "0.0.1"
 
   livecheck do
     skip "Auto-generated on release."
@@ -15,14 +15,13 @@ cask "tfswitch" do
 
   on_linux do
     on_intel do
-      url "https://github.com/yermulnik/tfswitch/releases/download/v#{version}/tfswitch_v#{version}_linux_amd64.tar.gz"
-      sha256 "bff956d6e981a452245ef08c406d5acc37829b2130a88c732b0619a5abdbcd33"
+      url "https://github.com/yermulnik/tfswitch/releases/download/v#{version}/tfswitch_v0.0.0_linux_amd64.tar.gz"
+      sha256 "00ace26e778549a4a22a986a8289460f4f43cf9e7fd3b3d5ffc462c7999d002e"
     end
   end
 
   conflicts_with cask: [
       "terraform",
-      "tfswitch",
     ]
 
   caveats do
