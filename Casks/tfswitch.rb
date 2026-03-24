@@ -3,7 +3,7 @@ cask "tfswitch" do
   name "tfswitch"
   desc "The tfswitch command lets you switch between terraform versions."
   homepage "https://warrensbox.github.io/terraform-switcher"
-  version "0.0.1"
+  version "1.15.1"
 
   livecheck do
     skip "Auto-generated on release."
@@ -15,14 +15,20 @@ cask "tfswitch" do
 
   on_linux do
     on_intel do
-      url "https://github.com/yermulnik/tfswitch/releases/download/v#{version}/tfswitch_v0.0.0_linux_amd64.tar.gz"
-      sha256 "00ace26e778549a4a22a986a8289460f4f43cf9e7fd3b3d5ffc462c7999d002e"
+      url "https://github.com/yermulnik/tfswitch/releases/download/v#{version}/tfswitch_v#{version}_linux_amd64.tar.gz"
+      sha256 "67b79a12fb56f361d51095e77d7b976c5e85fd2d5fd310d865623e1ad307afa0"
     end
   end
 
   conflicts_with cask: [
       "terraform",
     ]
+
+  postflight do
+    if OS.mac?
+      system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{staged_path}/tfswitch"]
+    end
+  end
 
   caveats do
     "Type 'tfswitch' on your command line and choose Terraform version that you want from the dropdown"
